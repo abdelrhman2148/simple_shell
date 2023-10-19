@@ -16,7 +16,7 @@ void help_command(void)
 }
 /**
  * help_alias_command - Displays help information for the 'alias' command.
- * 
+ *
  * Return: This function does not return a value.
 */
 void help_alias_command(void)
@@ -35,6 +35,7 @@ void help_alias_command(void)
 void help_cd_command(void)
 {
 	char *help = "cd: cd [-L|[-P [-e]] [-@]] [dir]\n";
+
 	write(STDOUT_FILENO, help, _string_length(help));
 	help = "\tChange the shell working directory.\n ";
 	write(STDOUT_FILENO, help, _string_length(help));
