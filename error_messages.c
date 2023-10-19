@@ -8,7 +8,8 @@
  * @ver_str: The version string.
  * Return: The updated error message.
 */
-char *appendErrorMessage(data_shell *datash, char *msg, char *error, char *ver_str)
+char *appendErrorMessage(data_shell *datash, char *msg,
+		char *error, char *ver_str)
 {
 	char *illegal_flag;
 

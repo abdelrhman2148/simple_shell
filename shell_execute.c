@@ -1,9 +1,9 @@
 #include "shell.h"
-
 /**
- * execute_line - 
- * @datash: 
- * Return: 
+ * execute_line - Execute a command or built-in function.
+ * @datash: A pointer to the data_shell structure
+ *                            containing command information.
+ * Return: 1 if the first argument is NULL
 */
 int execute_line(data_shell *datash)
 {

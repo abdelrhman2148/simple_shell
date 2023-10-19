@@ -3,7 +3,8 @@
 /**
  * convertSeparators - Convert special characters for command separation.
  * @input: The input string.
- * @bool: Flag to indicate conversion direction (0 for forward, 1 for backward).
+ * @bool: Flag to indicate conversion direction 0 for forward, 1 for backward.
+ *
  * Return: The modified input string.
 */
 char *convertSeparators(char *input, int bool)
@@ -65,8 +66,8 @@ void addNodes(sep_list **head_s, line_list **head_l, char *input)
 		}
 	}
 	line = _strtok(input, ";|&");
-	do
-	{
+
+	do {
 		line = convertSeparators(line, 1);
 		addLineNodeEnd(head_l, line);
 		line = _strtok(NULL, ";|&");

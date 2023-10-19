@@ -1,10 +1,10 @@
 #include "shell.h"
-
 /**
- * isSeparator - 
- * @path: 
- * @i: 
- * Return: 
+ * isSeparator - Checks if a character is a path separator
+ * @path: The input path string
+ * @i: A pointer to the current position in the path
+ *
+ * Return: 1 if the character is a separator, 0 otherwise
 */
 int isSeparator(char *path, int *i)
 {
@@ -20,10 +20,11 @@ int isSeparator(char *path, int *i)
 	return (0);
 }
 /**
- * findExecutable - 
- * @cmd: 
- * @_environ: 
- * Return: 
+ * findExecutable - Find the path to an executable command
+ * @cmd: The command to find
+ * @_environ: The environment variables
+ *
+ * Return: A pointer to the path of the executable if found, NULL otherwise
 */
 char *findExecutable(char *cmd, char **_environ)
 {
@@ -69,9 +70,10 @@ char *findExecutable(char *cmd, char **_environ)
 	return (NULL);
 }
 /**
- * isExecutable - 
- * @datash: 
- * Return: 
+ * isExecutable - Check if a command is executable
+ * @datash: The data_shell structure
+ *
+ * Return: 0 if the command is not executable, or the position the first char
 */
 int isExecutable(data_shell *datash)
 {
@@ -110,12 +112,12 @@ int isExecutable(data_shell *datash)
 	get_error(datash, 127);
 	return (-1);
 }
-
 /**
- * executeCommand - 
- * @dir: 
- * @datash: 
- * Return: 
+ * executeCommand - Execute a command
+ * @dir: The path to the command executable
+ * @datash: The data_shell structure
+ *
+ * Return: 0 on success, 1 on failure
 */
 int executeCommand(char *dir, data_shell *datash)
 {
@@ -145,9 +147,10 @@ int executeCommand(char *dir, data_shell *datash)
 	return (0);
 }
 /**
- * executeCommand - 
- * @datash: 
- * Return: 
+ * executeCommand - Execute a command with data_shell structure
+ * @datash: The data_shell structure
+ *
+ * Return: 1 on success, 0 on failure
 */
 int executeCommand(data_shell *datash)
 {
@@ -183,8 +186,7 @@ int executeCommand(data_shell *datash)
 	}
 	else
 	{
-		do
-		{
+		do {
 			wpd = waitpid(pd, &state, WUNTRACED);
 		}
 		while (!WIFEXITED(state) && !WIFSIGNALED(state);

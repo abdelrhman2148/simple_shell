@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * copyEnvironmentVariable - Copies an environment variable in the format "name=value".
+ * copyEnvironmentVariable - Copies an environment variable.
  * @name: The name part of the environment variable.
  * @value: The value part of the environment variable.
  * Return: A new string in the "name=value" format.
@@ -11,6 +11,7 @@ char *copyEnvironmentVariable(const char *name, const char *value)
 	int len_name = _strlen(name);
 	int len_value = _strlen(value);
 	char *new = malloc(sizeof(char) * (len_name + len_value + 2));
+
 	_strcpy(new, name);
 	_strcat(new, "=");
 	_strcat(new, value);
@@ -25,10 +26,12 @@ char *copyEnvironmentVariable(const char *name, const char *value)
  * @value: The value to set for the environment variable.
  * @datash: The data_shell structure.
 */
-void setEnvironmentVariable(const char *name, const char *value, data_shell *datash)
+void setEnvironmentVariable(const char *name,
+		const char *value, data_shell *datash)
 {
 	int i;
 	char *var_env, *name_env;
+
 	for (i = 0; datash->_environ[i]; i++)
 	{
 		var_env = _strdup(datash->_environ[i]);
@@ -42,7 +45,8 @@ void setEnvironmentVariable(const char *name, const char *value, data_shell *dat
 		}
 		free(var_env);
 	}
-	datash->_environ = _reallocDoublePointer(datash->_environ, i, sizeof(char *) * (i + 2));
+	datash->_environ = _reallocDoublePointer(datash->_environ,
+			i, sizeof(char *) * (i + 2));
 	datash->_environ[i] = copyEnvironmentVariable(name, value);
 	datash->_environ[i + 1] = NULL;
 }
@@ -71,7 +75,7 @@ int setenvCommand(data_shell *datash)
 */
 int unsetenvCommand(data_shell *datash)
 {
-	int i,k = -1;
+	int i, k = -1;
 	char *var_env;
 	char *name_env;
 	char **realloc_environ;

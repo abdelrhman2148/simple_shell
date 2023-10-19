@@ -53,8 +53,7 @@ char *intToString(int n)
 		n1 = n;
 	}
 	length--;
-	do
-	{
+	do {
 		buffer[length] = (n1 % 10) + '0';
 		n1 = n1 / 10;
 		length--;
@@ -90,5 +89,5 @@ int stringToInteger(char *s)
 		result = result + ((s[i] - '0') * multiplier);
 		multiplier /= 10;
 	}
-	return result * sign;
+	return (result * sign);
 }

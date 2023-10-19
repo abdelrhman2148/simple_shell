@@ -1,9 +1,9 @@
 #include "shell.h"
-
 /**
- * free_shell_data - 
- * @datash: 
- * Return: 
+ * free_shell_data - Frees the allocated memory for shell data.
+ * @datash: A pointer to the data_shell structure.
+ *
+ * Return: No return value.
 */
 void free_shell_data(data_shell *datash)
 {
@@ -16,12 +16,12 @@ void free_shell_data(data_shell *datash)
 	free(datash->_environ);
 	free(datash->pid);
 }
-
 /**
- * initialize_shell_data - 
- * @datash: 
- * @av: 
- * Return: 
+ * initialize_shell_data - Initializes the shell data structure.
+ * @datash: A pointer to the data_shell structure.
+ * @av: An array of command-line arguments.
+ *
+ * Return: No return value.
 */
 void initialize_shell_data(data_shell *datash, char **av)
 {
@@ -43,11 +43,13 @@ void initialize_shell_data(data_shell *datash, char **av)
 	datash->pid = itoa(getpid());
 }
 /**
- * main - 
- * @ac: 
- * @av: 
- * Return:
+ * main - Entry point for the shell program.
+ * @ac: The number of command-line arguments.
+ * @av: An array of command-line arguments.
+ *
+ * Return: The exit status of the shell.
 */
+
 int main(int ac, char **av)
 {
 	data_shell datash;

@@ -1,11 +1,11 @@
 #include "shell.h"
-
 /**
- * handle_exit - 
+ * handle_exit - Handles the exit command.
  *
- * @datash: 
- * Return: 
-*/
+ * @datash: Pointer to the data_shell structure.
+ *
+ * Return: 0 on successful exit, 1 on error.
+ */
 int handle_exit(data_shell *datash)
 {
 	unsigned int exit_status;

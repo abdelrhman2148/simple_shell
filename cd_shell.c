@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * changeDirectory - Change the current working directory based on the given path.
+ * changeDirectory - Change the current working directory based on the path.
  * @datash: The data_shell structure.
  * @path: The path to change to.
 */
@@ -44,7 +44,8 @@ int cdShell(data_shell *datash)
 	{
 		cdToHome(datash);
 	}
-	else if (_strcmp("$HOME", dir) == 0 || _strcmp("~", dir) == 0 || _strcmp("--", dir) == 0)
+	else if (_strcmp("$HOME", dir) == 0 || _strcmp("~", dir) == 0
+			|| _strcmp("--", dir) == 0)
 	{
 		cdToHome(datash);
 	}

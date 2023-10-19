@@ -1,8 +1,9 @@
 #include "shell.h"
 
 /**
- * generateEnvError - Generates an error message for environment-related errors.
+ * generateEnvError - Generates an error message for related errors.
  * @datash: The data_shell structure.
+ *
  * Return: The error message.
 */
 char *generateEnvError(data_shell *datash)
@@ -35,7 +36,8 @@ char *generateEnvError(data_shell *datash)
 }
 
 /**
- * generatePathError - Generates an error message for 'Permission denied' (error code 126).
+ * generatePathError - Generates an error message
+ *                 for 'Permission denied' (error code 126).
  * @datash: The data_shell structure.
  * Return: The error message.
 */
