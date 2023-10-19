@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * getBuiltinFunction - Get a pointer to the built-in function associated with a command.
+ * getBuiltinFunction - Get a pointer to the built-in function.
  * @command: The command name.
  * Return: A pointer to the built-in function, or NULL if not found.
 */

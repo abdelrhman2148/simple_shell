@@ -6,8 +6,7 @@
 */
 void changeDirectoryDot(data_shell *datash)
 {
-	char pwd[PATH_MAX];
-	char *cp_pwd, *cp_strtok_pwd;
+	char pwd[PATH_MAX], *cp_pwd, *cp_strtok_pwd;
 	const char *dir;
 
 	getcwd(pwd, sizeof(pwd));
@@ -22,10 +21,8 @@ void changeDirectoryDot(data_shell *datash)
 		return;
 	}
 	if (_strcmp("/", cp_pwd) == 0)
-	{
 		free(cp_pwd);
-		return;
-	}
+	return;
 	cp_strtok_pwd = cp_pwd;
 	reverseString(cp_strtok_pwd);
 	cp_strtok_pwd = _strtok(cp_strtok_pwd, "/");

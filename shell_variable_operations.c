@@ -1,14 +1,15 @@
 #include "shell.h"
 
 /**
- * add_replace_var_node - 
- * @head: 
- * @length_var: 
- * @value: 
- * @length_value: 
- * Return: 
+ * add_replace_var_node - Adds a replace variable node to the list.
+ * @head: Pointer to the head of the list.
+ * @length_var: Length of the variable.
+ * @value: Value of the variable.
+ * @length_value: Length of the value.
+ * Return: A pointer to the updated head of the list.
 */
-r_var *add_replace_var_node(r_var **head, int length_var, char *value, int length_value)
+r_var *add_replace_var_node(r_var **head, int length_var,
+		char *value, int length_value)
 {
 	r_var *new, *temp;
 
@@ -36,9 +37,8 @@ r_var *add_replace_var_node(r_var **head, int length_var, char *value, int lengt
 }
 
 /**
- * free_replace_var_list - 
- * @head: 
- * Return: 
+ * free_replace_var_list - Frees the memory allocated.
+ * @head: Pointer to the head of the list.
 */
 void free_replace_var_list(r_var **head)
 {

@@ -1,7 +1,7 @@
 #include "shell.h"
+
 /**
- * help_environment - 
- * Return: 
+ * help_environment - Prints information about the 'env' command.
 */
 void help_environment(void)
 {
@@ -11,11 +11,9 @@ void help_environment(void)
 	help = "Print the environment of the shell.\n";
 	write(STDOUT_FILENO, help, _string_length(help));
 }
-
 /**
- * help_set_environment -
- * Return: 
- */
+ * help_set_environment - Prints information about the 'setenv' command.
+*/
 void help_set_environment(void)
 {
 	char *help = "setenv: setenv (const char *name, const char *value,";
@@ -26,11 +24,9 @@ void help_set_environment(void)
 	help = "Add a new definition to the environment\n";
 	write(STDOUT_FILENO, help, _string_length(help));
 }
-
 /**
- * help_unset_environment -
- * Return: 
- */
+ * help_unset_environment - Prints information about the 'unsetenv' command.
+*/
 void help_unset_environment(void)
 {
 	char *help = "unsetenv: unsetenv (const char *name)\n\t";
@@ -39,11 +35,9 @@ void help_unset_environment(void)
 	help = "Remove an entry completely from the environment\n";
 	write(STDOUT_FILENO, help, _string_length(help));
 }
-
 /**
- * help_general_info - 
- * Return: 
- */
+ * help_general_info - Provides general information about the shell.
+*/
 void help_general_info(void)
 {
 	char *help = "^-^ bash, version 1.0(1)-release\n";
@@ -62,14 +56,15 @@ void help_general_info(void)
 	help = "unsetenv [variable]\n";
 	write(STDOUT_FILENO, help, _string_length(help));
 }
-
 /**
- * help_exit_command - 
- * Return: 
- */
+ * help_exit_command - Explains the 'exit' command.
+ * This function details the 'exit' command, its options, and how it is used to
+ * exit the shell with a specified status code.
+*/
 void help_exit_command(void)
 {
 	char *help = "exit: exit [n]\n Exit shell.\n";
+
 	write(STDOUT_FILENO, help, _string_length(help));
 	help = "Exits the shell with a status of N. If N is omitted, the exit";
 	write(STDOUT_FILENO, help, _string_length(help));

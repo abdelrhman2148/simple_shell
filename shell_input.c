@@ -1,12 +1,11 @@
 #include "shell.h"
-
 /**
- * load_line - 
- * @lineptr: 
- * @n: 
- * @buffer: 
- * @length: 
- */
+ * load_line - Load a line of input into a dynamic buffer.
+ * @lineptr: A pointer to a pointer that will hold the line.
+ * @n: A pointer to the size of the buffer.
+ * @buffer: A character array to store the line temporarily.
+ * @length: The length of the line to load.
+*/
 void load_line(char **lineptr, size_t *n, char *buffer, size_t length)
 {
 	if (*lineptr == NULL)
@@ -32,11 +31,13 @@ void load_line(char **lineptr, size_t *n, char *buffer, size_t length)
 	}
 }
 /**
- * custom_get_line - 
- * @lineptr: 
- * @n: 
- * @stream: 
- * Return: 
+ * custom_get_line - Custom implementation of getting
+ *                          a line of input from a stream.
+ * @lineptr: A pointer to a pointer that will hold the line.
+ * @n: A pointer to the size of the buffer.
+ * @stream: The input stream.
+ *
+ * Return: The number of characters read, or -1 on error.
 */
 ssize_t custom_get_line(char **lineptr, size_t *n, FILE *stream)
 {

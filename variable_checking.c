@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * analyzeEnvironment - Analyzes the environment variables and stores them in a linked list.
+ * analyzeEnvironment - Analyzes the environment variables and stores them.
  * @envVars: Pointer to the linked list for environment variables.
  * @input: The input string to analyze.
  * @data: Pointer to the data_shell structure.
@@ -18,7 +18,9 @@ void analyzeEnvironment(r_var **envVars, char *input, data_shell *data)
 			if (environment[row][chr] == '=')
 			{
 				valueLength = _strlen(environment[row] + chr + 1);
-				add_rvar_node(envVars, j, environment[row] + chr + 1, valueLength);
+				add_rvar_node(envVars, j,
+						environment[row] + chr + 1,
+						valueLength);
 				return;
 			}
 			if (input[j] == environment[row][chr])
@@ -29,7 +31,9 @@ void analyzeEnvironment(r_var **envVars, char *input, data_shell *data)
 	}
 	for (j = 0; input[j]; j++)
 	{
-		if (input[j] == ' ' || input[j] == '\t' || input[j] == ';' || input[j] == '\n')
+		if (input[j] == ' ' || input[j] == '\t'
+				|| input[j] == ';'
+				|| input[j] == '\n')
 			break;
 	}
 	add_rvar_node(envVars, j, NULL, 0);
@@ -43,7 +47,8 @@ void analyzeEnvironment(r_var **envVars, char *input, data_shell *data)
  * @data: Pointer to the data_shell structure.
  * Return: The number of characters processed.
 */
-int checkVariables(r_var **envVars, char *input, char *statusString, data_shell *data)
+int checkVariables(r_var **envVars, char *input,
+		char *statusString, data_shell *data)
 {
 	int i, last, pidLength;
 
@@ -55,11 +60,13 @@ int checkVariables(r_var **envVars, char *input, char *statusString, data_shell 
 		if (input[i] == '$')
 		{
 			if (input[i + 1] == '?')
-				add_rvar_node(envVars, 2, statusString, last), i++;
+				add_rvar_node(envVars, 2, statusString, last),
+					i++;
 			else if (input[i + 1] == '$')
-				add_rvar_node(envVars, 2, data->pid, pidLength), i++;
-			else if (input[i + 1] == '\n' || 
-					input[i + 1] == '\0' || input[i + 1] == ' ' || 
+				add_rvar_node(envVars, 2, data->pid, pidLength),
+					i++;
+			else if (input[i + 1] == '\n' ||
+					input[i + 1] == '\0' || input[i + 1] == ' ' ||
 					input[i + 1] == '\t' || input[i + 1] == ';')
 				add_rvar_node(envVars, 0, NULL, 0);
 			else
@@ -77,7 +84,8 @@ int checkVariables(r_var **envVars, char *input, char *statusString, data_shell 
  * @newInputLength: The length of the newInput buffer.
  * Return: The modified input string.
 */
-char *replaceVariables(r_var **envVars, char *input, char *newInput, int newInputLength)
+char *replaceVariables(r_var **envVars,
+		char *input, char *newInput, int newInputLength)
 {
 	r_var *index;
 	int i, j, k;
@@ -132,8 +140,8 @@ char *replaceInputVariables(char *input, data_shell *datash)
 	int originalLength, newInputLength;
 
 	statusString = aux_itoa(datash->status);
-
-	originalLength = checkVariables(&environmentVariables, input, statusString, datash);
+	originalLength = checkVariables(&environmentVariables,
+			input, statusString, datash);
 
 	if (environmentVariables == NULL)
 	{
@@ -141,6 +149,7 @@ char *replaceInputVariables(char *input, data_shell *datash)
 		return (input);
 	}
 	r_var *index = environmentVariables;
+
 	newInputLength = 0;
 	while (index != NULL)
 	{
@@ -150,7 +159,8 @@ char *replaceInputVariables(char *input, data_shell *datash)
 	newInputLength += originalLength;
 	newInput = malloc(sizeof(char) * (newInputLength + 1));
 	newInput[newInputLength] = '\0';
-	newInput = replaceVariables(&environmentVariables, input, newInput, newInputLength);
+	newInput = replaceVariables(&environmentVariables,
+			input, newInput, newInputLength);
 
 	free(input);
 	free(statusString);

@@ -1,11 +1,10 @@
 #include "shell.h"
-
 /**
- * memory_copy - 
- * @new_pointer: 
- * @pointer: 
- * @size: 
- */
+ * memory_copy - Copy memory from one location to another.
+ * @new_pointer: The destination pointer where the memory will be copied to.
+ * @pointer: The source pointer from which memory will be copied.
+ * @size: The number of bytes to copy.
+*/
 void memory_copy(void *new_pointer, const void *pointer, unsigned int size)
 {
 	char *char_pointer = (char *)pointer;
@@ -15,16 +14,16 @@ void memory_copy(void *new_pointer, const void *pointer, unsigned int size)
 	for (i = 0; i < size; i++)
 		char_new_pointer[i] = char_pointer[i];
 }
-
 /**
- * realloc_memory - 
- * @pointer: 
- * @old_size: 
- * @new_size: 
+ * realloc_memory - Reallocate memory, optionally copying the existing content.
+ * @pointer: The pointer to the memory block to reallocate.
+ * @old_size: The current size of the memory block.
+ * @new_size: The desired new size for the memory block.
  *
- * Return: 
+ * Return: A pointer to the reallocated memory block or NULL on failure.
 */
-void *realloc_memory(void *pointer, unsigned int old_size, unsigned int new_size)
+void *realloc_memory(void *pointer, unsigned int old_size,
+		unsigned int new_size)
 {
 	void *new_pointer;
 
@@ -36,7 +35,7 @@ void *realloc_memory(void *pointer, unsigned int old_size, unsigned int new_size
 		return (NULL);
 	}
 	if (new_size == old_size)
-		return pointer;
+		return (pointer);
 	new_pointer = malloc(new_size);
 	if (new_pointer == NULL)
 		return (NULL);
@@ -45,18 +44,19 @@ void *realloc_memory(void *pointer, unsigned int old_size, unsigned int new_size
 	else
 		memory_copy(new_pointer, pointer, old_size);
 	free(pointer);
-	return new_pointer;
+	return (new_pointer);
 }
 
 /**
- * realloc_double_pointer - 
- * @pointer:
- * @old_size: 
- * @new_size: 
+ * realloc_double_pointer - Reallocate a double pointer (array of strings).
+ * @pointer: The pointer to the array of strings to reallocate.
+ * @old_size: The current size of the array.
+ * @new_size: The desired new size for the array.
  *
- * Return: 
+ * Return: A pointer to the reallocated array of strings or NULL on failure.
 */
-char **realloc_double_pointer(char **pointer, unsigned int old_size, unsigned int new_size)
+char **realloc_double_pointer(char **pointer, unsigned int old_size,
+		unsigned int new_size)
 {
 	char **new_pointer;
 	unsigned int i;

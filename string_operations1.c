@@ -15,7 +15,7 @@ char *stringDuplicate(const char *s)
 	if (new == NULL)
 		return (NULL);
 	stringCopy(new, s);
-    return (new);
+	return (new);
 }
 
 /**

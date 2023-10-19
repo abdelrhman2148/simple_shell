@@ -1,7 +1,8 @@
 #include "shell.h"
 
 /**
- * countRepeatedChar - Count the number of repeated characters at the beginning of a string.
+ * countRepeatedChar - Count the number of repeated characters
+ *                                  at the beginning of a string.
  * @input: The input string.
  * @i: The current index in the string.
  * Return: The number of repeated characters.
@@ -9,7 +10,7 @@
 int countRepeatedChar(const char *input, int i)
 {
 	if (input[i - 1] == input[i])
-		return countRepeatedChar(input, i + 1);
+		return (countRepeatedChar(input, i + 1));
 	return (i);
 }
 
@@ -27,7 +28,7 @@ int findSyntaxError(const char *input, int i, char last)
 	if (input[i] == '\0')
 		return (0);
 	if (input[i] == ' ' || input[i] == '\t')
-		return findSyntaxError(input, i + 1, last);
+		return (findSyntaxError(input, i + 1, last));
 	if (input[i] == ';')
 	{
 		if (last == '|' || last == '&' || last == ';')
@@ -59,7 +60,8 @@ int findSyntaxError(const char *input, int i, char last)
 }
 
 /**
- * findFirstNonSpecialChar - Find the index of the first non-special character in the input string.
+ * findFirstNonSpecialChar - Find the index of
+ *                    the first non-special character in the input string.
  * @input: The input string.
  * @i: A pointer to store the index of the first non-special character.
  * Return: 0 if a valid character is found, -1 if a syntax error is found.
@@ -87,8 +89,7 @@ void printSyntaxError(data_shell *datash, const char *input, int i)
 {
 	const char *messages[] = {";", "|", "||", "&", "&&"};
 	char *error, *counter;
-	int length;
-	int messageIndex = 0;
+	int length, messageIndex = 0;
 
 	if (input[i] == ';')
 	{
@@ -116,10 +117,8 @@ void printSyntaxError(data_shell *datash, const char *input, int i)
 	length += _strlen(messages[messageIndex]) + 17;
 	error = malloc(sizeof(char) * (length + 1));
 	if (error == 0)
-	{
 		free(counter);
-		return;
-	}
+	return;
 	_strcpy(error, datash->av[0]);
 	_strcat(error, ": ");
 	_strcat(error, counter);
@@ -127,12 +126,8 @@ void printSyntaxError(data_shell *datash, const char *input, int i)
 	_strcat(error, messages[messageIndex]);
 	_strcat(error, "\" unexpected\n");
 	_strcat(error, "\0");
-
-	write(STDERR_FILENO, error, length);
-	free(error);
-	free(counter);
+	write(STDERR_FILENO, error, length) || free(error) || free(counter);
 }
-
 /**
  * checkSyntaxError - Check for syntax errors in the input string.
  * @datash: The data_shell structure.
@@ -150,7 +145,6 @@ int checkSyntaxError(data_shell *datash, const char *input)
 		return (1);
 	}
 	i = findSyntaxError(input, begin, input[begin]);
-	
 	if (i != 0)
 	{
 		printSyntaxError(datash, input, begin + i);

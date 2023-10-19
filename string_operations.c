@@ -44,7 +44,8 @@ char *stringCopy(char *dest, char *src)
  * stringCompare - Compare two strings.
  * @s1: The first string.
  * @s2: The second string.
- * Return: 0 if the strings are equal, a positive value if s1 > s2, a negative value if s1 < s2.
+ * Return: 0 if the strings are equal, a positive value if s1 > s2,
+ *                                         a negative value if s1 < s2.
 */
 int stringCompare(char *s1, char *s2)
 {
@@ -63,7 +64,7 @@ int stringCompare(char *s1, char *s2)
  * stringFindCharacter - Find the first occurrence of a character in a string.
  * @s: The string to search.
  * @c: The character to find.
- * Return: A pointer to the first occurrence of the character, or NULL if not found.
+ * Return: A pointer to the first occurrence of the character, or NULL.
 */
 char *stringFindCharacter(char *s, char c)
 {
@@ -78,7 +79,8 @@ char *stringFindCharacter(char *s, char c)
 }
 
 /**
- * stringSpan - Get the length of the initial segment of a string that consists of only characters in another string.
+ * stringSpan - Get the length of the initial segment of a string
+ *               that consists of only characters in another string.
  * @s: The string to examine.
  * @accept: The string containing characters to search for.
  * Return: The length of the initial segment.

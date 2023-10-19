@@ -1,9 +1,9 @@
 #include "shell.h"
-
 /**
- * help_command - 
- * Return:
- */
+ * help_command - Displays help information for the 'help' command.
+ *
+ * Return: This function does not return a value.
+*/
 void help_command(void)
 {
 	char *help = "help: help [-dms] [pattern ...]\n";
@@ -14,10 +14,10 @@ void help_command(void)
 	help = "Displays brief summaries of builtin commands.\n";
 	write(STDOUT_FILENO, help, _string_length(help));
 }
-
 /**
- * help_alias_command - 
- * Return: 
+ * help_alias_command - Displays help information for the 'alias' command.
+ * 
+ * Return: This function does not return a value.
 */
 void help_alias_command(void)
 {
@@ -28,8 +28,9 @@ void help_alias_command(void)
 	write(STDOUT_FILENO, help, _string_length(help));
 }
 /**
- * help_cd_command - 
- * Return: 
+ * help_cd_command - Displays help information for the 'cd' command.
+ *
+ * Return: This function does not return a value.
 */
 void help_cd_command(void)
 {
