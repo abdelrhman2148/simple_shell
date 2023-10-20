@@ -1,18 +1,21 @@
 #include "shell.h"
 
 /**
- * _erratoi - converts a string to an integer
- * @s: the string to be converted
- * Return: 0 if no numbers in string, converted number otherwise
- *       -1 on error
- */
+ * _erratoi - Convert a string to an integer with error handling
+ * @s: The string to be converted to an integer
+ * 
+ * This function takes a string 's' as input and converts it into an integer.
+ * It performs error checking to ensure the conversion is valid.
+ * 
+ * @return: The converted integer if successful, -1 on error.
+*/
 int _erratoi(char *s)
 {
 	int i = 0;
 	unsigned long int result = 0;
 
 	if (*s == '+')
-		s++;  /* TODO: why does this make main return 255? */
+		s++;
 	for (i = 0;  s[i] != '\0'; i++)
 	{
 		if (s[i] >= '0' && s[i] <= '9')
@@ -29,12 +32,14 @@ int _erratoi(char *s)
 }
 
 /**
- * print_error - prints an error message
- * @info: the parameter & return info struct
- * @estr: string containing specified error type
- * Return: 0 if no numbers in string, converted number otherwise
- *        -1 on error
- */
+ * print_error - Prints an error message to the standard error stream.
+ * @info: A pointer to the info_t struct containing program information.
+ * @estr: A string containing the specified error message.
+ * 
+ * This function is responsible for printing an error message to the standard
+ * error stream. It includes information about the file name, line number,
+ * and the error message itself, making it easier to identify and debug errors.
+*/
 void print_error(info_t *info, char *estr)
 {
 	_eputs(info->fname);
@@ -45,14 +50,17 @@ void print_error(info_t *info, char *estr)
 	_eputs(": ");
 	_eputs(estr);
 }
-
 /**
- * print_d - function prints a decimal (integer) number (base 10)
- * @input: the input
- * @fd: the filedescriptor to write to
+ * print_d - This function prints a decimal (integer) number in base 10.
+ * @input: The integer to be printed.
+ * @fd: The file descriptor where the output is written.
  *
- * Return: number of characters printed
- */
+ * This function takes an integer 'input' and prints it as a decimal number.
+ * If 'fd' is set to STDERR_FILENO, error output is used. It handles negative
+ * numbers correctly and returns the number of characters printed.
+ *
+ * Returns: The number of characters printed.
+*/
 int print_d(int input, int fd)
 {
 	int (*__putchar)(char) = _putchar;
@@ -84,15 +92,19 @@ int print_d(int input, int fd)
 
 	return (count);
 }
-
 /**
- * convert_number - converter function, a clone of itoa
- * @num: number
- * @base: base
- * @flags: argument flags
+ * convert_number - Converts a long integer to a string represented
+ * @num: The number to be converted.
+ * @base: The base in which the conversion should be done.
+ * @flags: Flags that control the conversion process.
  *
- * Return: string
- */
+ * This function takes a long integer 'num' and converts it into
+ *                   a string representation in the specified 'base'.
+ * It considers the 'flags' to determine the conversion behavior
+ *                                    such as handling unsigned numbers.
+ *
+ * Return: A pointer to the resulting string.
+*/
 char *convert_number(long int num, int base, int flags)
 {
 	static char *array;
@@ -122,11 +134,17 @@ char *convert_number(long int num, int base, int flags)
 }
 
 /**
- * remove_comments - function replaces first instance of '#' with '\0'
- * @buf: address of the string to modify
+ * remove_comments - Replaces the first instance
+ *               of '#' with a null character ('\0'.)
+ * @buf: The address of the string to modify
  *
- * Return: Always 0;
- */
+ * This function scans the input string 'buf' and if it finds
+ *           the character '#', it replaces the first occurrence
+ *                of '#' with a null character.
+ * This effectively removes any text following the '#' symbol in 'buf'.
+ *
+ * Returns: Always 0.
+*/
 void remove_comments(char *buf)
 {
 	int i;

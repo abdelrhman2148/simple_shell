@@ -1,22 +1,31 @@
 #include "shell.h"
 
 /**
- * interactive - returns true if shell is interactive mode
- * @info: struct address
+ * interactive - Check if the shell is running in interactive mode
  *
- * Return: 1 if interactive mode, 0 otherwise
- */
+ * This function checks whether the shell is currently operating in an interactive
+ * mode, meaning it can accept input and provide output to the user via a terminal.
+ *
+ * @info: Pointer to a struct that contains information about the shell
+ *
+ * Return: 1 if the shell is in interactive mode, 0 otherwise
+*/
 int interactive(info_t *info)
 {
 	return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
-
 /**
- * is_delim - checks if character is a delimeter
- * @c: the char to check
- * @delim: the delimeter string
- * Return: 1 if true, 0 if false
- */
+ * is_delim - Check if a character is a delimiter in a given delimiter string.
+ * @c: The character to check.
+ * @delim: The delimiter string to search within.
+ * 
+ * This function iterates through the delimiter string and checks if the given
+ * character 'c' matches any character in the delimiter string. If a match is
+ * found, the function returns 1, indicating that 'c' is a delimiter. Otherwise,
+ * it returns 0, indicating that 'c' is not a delimiter.
+ * 
+ * Returns: 1 if 'c' is a delimiter, 0 if 'c' is not a delimiter.
+*/
 int is_delim(char c, char *delim)
 {
 	while (*delim)
@@ -24,13 +33,16 @@ int is_delim(char c, char *delim)
 			return (1);
 	return (0);
 }
-
 /**
- *_isalpha - checks for alphabetic character
- *@c: The character to input
- *Return: 1 if c is alphabetic, 0 otherwise
- */
-
+ * _isalpha - Checks if a character is an alphabetic character
+ * @c: The character to be checked
+ *
+ * This function takes a character 'c' as input and checks whether it is an
+ * alphabetic character (a letter). It returns 1 if 'c' is an alphabetic
+ * character (either uppercase or lowercase), and 0 otherwise.
+ *
+ * Return: 1 if 'c' is alphabetic, 0 otherwise.
+*/
 int _isalpha(int c)
 {
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
@@ -40,11 +52,15 @@ int _isalpha(int c)
 }
 
 /**
- *_atoi - converts a string to an integer
- *@s: the string to be converted
- *Return: 0 if no numbers in string, converted number otherwise
- */
-
+ * _atoi - Converts a string to an integer.
+ *
+ * This function takes a string and converts it to an integer. It handles both positive
+ * and negative numbers, and it stops conversion when a non-digit character is encountered.
+ *
+ * @s: The string to be converted to an integer.
+ *
+ * Return: The converted integer. If there are no valid numbers in the string, it returns 0.
+*/
 int _atoi(char *s)
 {
 	int i, sign = 1, flag = 0, output;

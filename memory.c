@@ -1,11 +1,16 @@
 #include "shell.h"
 
 /**
- * bfree - frees a pointer and NULLs the address
- * @ptr: address of the pointer to free
+ * bfree - Frees a dynamically allocated memory pointer and sets it to NULL.
  *
- * Return: 1 if freed, otherwise 0.
- */
+ * This function takes a pointer to a dynamically allocated memory address and
+ * frees the memory to prevent memory leaks. It also sets the pointer to NULL
+ * to avoid potential access to invalid memory.
+ *
+ * @ptr: Address of the pointer to free.
+ *
+ * Return: 1 if memory is freed successfully, otherwise 0.
+*/
 int bfree(void **ptr)
 {
 	if (ptr && *ptr)

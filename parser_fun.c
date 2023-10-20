@@ -1,12 +1,19 @@
 #include "shell.h"
 
 /**
- * is_cmd - determines if a file is an executable command
- * @info: the info struct
- * @path: path to the file
- *
- * Return: 1 if true, 0 otherwise
- */
+ * is_cmd - Determines if a file is an executable command.
+ * 
+ * This function checks if a file specified by its path is executable command.
+ * An executable command is a regular file that can be executed as a program.
+ * 
+ * @info: The info struct, although not used in this function.
+ * @path: The path to the file being checked.
+ * 
+ * Return:
+ * - 1 if the file is an executable command.
+ * - 0 if the file is not an executable command or
+ *   if an error occurs during the check.
+*/
 int is_cmd(info_t *info, char *path)
 {
 	struct stat st;
@@ -21,15 +28,19 @@ int is_cmd(info_t *info, char *path)
 	}
 	return (0);
 }
-
 /**
- * dup_chars - duplicates characters
- * @pathstr: the PATH string
- * @start: starting index
- * @stop: stopping index
+ * dup_chars - Duplicate characters from a string within a specified range.
  *
- * Return: pointer to new buffer
- */
+ * This function takes a string and duplicates the characters in a specified
+ * range defined by the 'start' and 'stop' indices. It copies the characters
+ * from 'start' (inclusive) to 'stop' (exclusive) into a new buffer.
+ *
+ * @param pathstr: The original string to duplicate characters from.
+ * @param start:   The starting index of the range (inclusive).
+ * @param stop:    The stopping index of the range (exclusive).
+ *
+ * @return: A pointer to a new buffer containing the duplicated characters.
+*/
 char *dup_chars(char *pathstr, int start, int stop)
 {
 	static char buf[1024];
@@ -43,13 +54,17 @@ char *dup_chars(char *pathstr, int start, int stop)
 }
 
 /**
- * find_path - finds this cmd in the PATH string
- * @info: the info struct
- * @pathstr: the PATH string
- * @cmd: the cmd to find
+ * find_path - Finds the full path of a command in the PATH environment var.
  *
- * Return: full path of cmd if found or NULL
- */
+ * This function searches for a command in the specified PATH string
+ * and returns its full path if found.
+ *
+ * @param info - The info struct containing additional information.
+ * @param pathstr - The PATH environment variable string.
+ * @param cmd - The command to find.
+ *
+ * @return - The full path of the command if found, or NULL if not found.
+*/
 char *find_path(info_t *info, char *pathstr, char *cmd)
 {
 	int i = 0, curr_pos = 0;

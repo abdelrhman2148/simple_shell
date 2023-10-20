@@ -1,12 +1,19 @@
 #include "shell.h"
 
 /**
- * _myexit - exits the shell
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- *  Return: exits with a given exit status
- *         (0) if info.argv[0] != "exit"
- */
+ * _myexit - Exits the shell with a specified exit status.
+ * @info: A structure containing potential arguments and
+ *                                 information about the shell.
+ *
+ * This function is responsible for exiting
+ *       the shell when the "exit" command is issued.
+ * If an exit status is provided as an argument
+ *                 it will be used as the exit status.
+ *
+ * @info: The structure containing shell information.
+ *
+ * Return: Returns the exit status, which is (0) if info->argv[0] is not "exit".
+*/
 int _myexit(info_t *info)
 {
 	int exitcheck;
@@ -30,11 +37,18 @@ int _myexit(info_t *info)
 }
 
 /**
- * _mycd - changes the current directory of the process
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- *  Return: Always 0
- */
+ * _mycd - Changes the current working directory of the process
+ * @info: A structure containing potential arguments and information needed
+ *        to maintain a consistent function prototype.
+ *
+ * This function is responsible for changing the current working directory of
+ * the process. It first checks if the shell is in interactive mode, and if it
+ * is, it returns true. Then, it attempts to retrieve the current working
+ * directory using the `getcwd` function. If successful, it proceeds to change
+ * the directory as specified in the provided arguments.
+ *
+ * @return: Always returns 0.
+*/
 int _mycd(info_t *info)
 {
 	char *s, *dir, buffer[1024];
@@ -47,7 +61,7 @@ int _mycd(info_t *info)
 	{
 		dir = _getenv(info, "HOME=");
 		if (!dir)
-			chdir_ret = /* TODO: what should this be? */
+			chdir_ret = 
 				chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
 		else
 			chdir_ret = chdir(dir);
@@ -61,7 +75,7 @@ int _mycd(info_t *info)
 			return (1);
 		}
 		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
-		chdir_ret = /* TODO: what should this be? */
+		chdir_ret = 
 			chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
@@ -78,13 +92,18 @@ int _mycd(info_t *info)
 	}
 	return (0);
 }
-
 /**
- * _myhelp - changes the current directory of the process
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- *  Return: Always 0
- */
+ * _myhelp - Changes the current directory of the process.
+ * @info: A structure containing potential arguments. It is used to maintain
+ *        a constant function prototype.
+ *
+ * This function is responsible for handling the 'help' command. It takes
+ * a structure 'info' as an argument, which typically includes command-line
+ * arguments and other information. The function's primary purpose is to
+ * provide help or instructions to the user about how to use the shell or
+ * specific commands.
+ * Return: Always returns 0 to indicate successful execution.
+*/
 int _myhelp(info_t *info)
 {
 	char **arg_array;

@@ -1,12 +1,16 @@
 #include "shell.h"
 
 /**
- * hsh - main shell loop
- * @info: the parameter & return info struct
- * @av: the argument vector from main()
+ * hsh - The main shell loop that handles user input and commands.
+ * @info: A pointer to the information struct for the shell.
+ * @av: The argument vector from the main function.
  *
- * Return: 0 on success, 1 on error, or error code
- */
+ * This function is the heart of the shell program, responsible for handling
+ * user input, processing commands, and executing built-in functions or
+ * external commands. It runs in a loop until an exit condition is met.
+ *
+ * @return: 0 on success, 1 on error, or an error code indicating the result.
+*/
 int hsh(info_t *info, char **av)
 {
 	ssize_t r = 0;
@@ -44,14 +48,20 @@ int hsh(info_t *info, char **av)
 }
 
 /**
- * find_builtin - finds a builtin command
- * @info: the parameter & return info struct
+ * find_builtin - Search for a built-in command in a command shell
  *
- * Return: -1 if builtin not found,
- *			0 if builtin executed successfully,
- *			1 if builtin found but not successful,
- *			-2 if builtin signals exit()
- */
+ * This function searches for a built-in command within a command shell.
+ * It checks if the given command is a recognized built-in command and
+ * executes the corresponding function if found.
+ *
+ * @info: The parameter and return information structure.
+ *
+ * Return:
+ * -1: If the built-in command is not found.
+ *  0: If the built-in command is executed successfully.
+ *  1: If the built-in command is found but not successfully executed.
+ * -2: If the built-in command signals an exit from the shell.
+*/
 int find_builtin(info_t *info)
 {
 	int i, built_in_ret = -1;
@@ -78,11 +88,15 @@ int find_builtin(info_t *info)
 }
 
 /**
- * find_cmd - finds a command in PATH
- * @info: the parameter & return info struct
+ * find_cmd - Finds a command in the PATH environment variable.
  *
+ * This function takes an info struct as a parameter and
+ * searches for the command specified in the info->argv[0] within the dirs
+ * listed in the PATH environment variable.
+ *
+ * @param info: A pointer to the info struct containing relevant information.
  * Return: void
- */
+*/
 void find_cmd(info_t *info)
 {
 	char *path = NULL;
@@ -120,11 +134,15 @@ void find_cmd(info_t *info)
 }
 
 /**
- * fork_cmd - forks a an exec thread to run cmd
- * @info: the parameter & return info struct
+ * fork_cmd - Create a child process to execute a command.
  *
- * Return: void
- */
+ * This function forks a child process and executes the specified command in it.
+ * It also handles errors and reports them using perror.
+ *
+ * @info: Pointer to the parameter and return info struct.
+ *
+ * Return: None.
+*/
 void fork_cmd(info_t *info)
 {
 	pid_t child_pid;
@@ -132,7 +150,6 @@ void fork_cmd(info_t *info)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-		/* TODO: PUT ERROR FUNCTION */
 		perror("Error:");
 		return;
 	}
@@ -145,7 +162,6 @@ void fork_cmd(info_t *info)
 				exit(126);
 			exit(1);
 		}
-		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{

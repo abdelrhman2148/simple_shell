@@ -1,11 +1,13 @@
 #include "shell.h"
-
 /**
- * _myenv - prints the current environment
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
- */
+ * _myenv - Prints the current environment variables.
+ *
+ * This function prints the list of environment variables to the standard output.
+ *
+ * @info: A structure containing potential arguments. Used to maintain a constant function prototype.
+ *
+ * Return: Always 0 to indicate successful execution.
+*/
 int _myenv(info_t *info)
 {
 	print_list_str(info->env);
@@ -13,12 +15,17 @@ int _myenv(info_t *info)
 }
 
 /**
- * _getenv - gets the value of an environ variable
- * @info: Structure containing potential arguments. Used to maintain
- * @name: env var name
+ * _getenv - Get the value of an environment variable
+ * @info: Structure containing information about the environment
+ * @name: The name of the environment variable to retrieve
  *
- * Return: the value
- */
+ * This function searches for the environment variable specified by 'name' in
+ * the linked list of environment variables stored in 'info->env'. If it finds
+ * a match, it returns the value of the environment variable. If no match is
+ * found, it returns NULL.
+ *
+ * Returns: The value of the environment variable or NULL if not found.
+*/
 char *_getenv(info_t *info, const char *name)
 {
 	list_t *node = info->env;
@@ -35,12 +42,14 @@ char *_getenv(info_t *info, const char *name)
 }
 
 /**
- * _mysetenv - Initialize a new environment variable,
- *             or modify an existing one
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
- */
+ * _mysetenv - Initialize a new environment variable or modify an existing one.
+ *
+ * This function is responsible for setting or modifying environment variables in a shell.
+ * It takes a structure containing potential arguments to maintain a consistent function prototype.
+ *
+ * @param info: A pointer to a structure containing arguments and information.
+ * @return: 0 on success, 1 on failure.
+*/
 int _mysetenv(info_t *info)
 {
 	if (info->argc != 3)
@@ -54,11 +63,18 @@ int _mysetenv(info_t *info)
 }
 
 /**
- * _myunsetenv - Remove an environment variable
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
- */
+ * _myunsetenv - Remove one or more environment variables
+ * @info: A structure that contains information about the function arguments.
+ *
+ * This function is used to remove one or more environment variables. It takes
+ * the arguments provided in 'info' and processes them for removal.
+ *
+ * @info: A structure that contains the following fields:
+ *   - argc: The number of arguments in 'argv'.
+ *   - argv: An array of argument strings.
+ *
+ * Return: Always returns 0, indicating successful execution.
+*/
 int _myunsetenv(info_t *info)
 {
 	int i;
@@ -75,11 +91,17 @@ int _myunsetenv(info_t *info)
 }
 
 /**
- * populate_env_list - populates env linked list
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
- */
+ * populate_env_list - Populates an environment linked list.
+ *
+ * This function populates a linked list with environment variables, providing
+ * a convenient way to access and manipulate the environment variables in the
+ * program.
+ *
+ * @info: A pointer to a structure containing potential arguments. It is used
+ *        to maintain a constant function prototype.
+ *
+ * Return: Always returns 0 to indicate successful execution.
+*/
 int populate_env_list(info_t *info)
 {
 	list_t *node = NULL;

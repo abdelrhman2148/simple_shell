@@ -1,11 +1,14 @@
 #include "shell.h"
 
 /**
- * get_environ - returns the string array copy of our environ
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
- */
+ * get_environ - Copies the string array of environment variables (environ).
+ *
+ * This function creates a copy of the environment variables and returns
+ * it as a string array. It's used to maintain a constant function prototype.
+ *
+ * @info: A structure containing potential argument not used in this function.
+ * Return: Always returns 0 to indicate success.
+*/
 char **get_environ(info_t *info)
 {
 	if (!info->environ || info->env_changed)
@@ -18,12 +21,17 @@ char **get_environ(info_t *info)
 }
 
 /**
- * _unsetenv - Remove an environment variable
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: 1 on delete, 0 otherwise
- * @var: the string env var property
- */
+ * _unsetenv - Remove an environment variable from a list
+ * @info: A structure that holds information about the environment.
+ * @var: The name of the environment variable to be removed.
+ *
+ * This function removes an environment variable specified by 'var' from the
+ * list of environment variables in the 'info' structure. It iterates through
+ * the list and checks if each variable matches 'var', and if found, it removes
+ * it.
+ *
+ * Return: 1 if the variable was successfully deleted, 0 otherwise.
+*/
 int _unsetenv(info_t *info, char *var)
 {
 	list_t *node = info->env;
@@ -50,14 +58,19 @@ int _unsetenv(info_t *info, char *var)
 }
 
 /**
- * _setenv - Initialize a new environment variable,
- *             or modify an existing one
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- * @var: the string env var property
- * @value: the string env var value
- *  Return: Always 0
- */
+ * _setenv - Initializes a new environment variable or modifies an existing one.
+ * 
+ * This function is responsible for managing environment variables. It takes a
+ * variable name and its corresponding value and sets or updates the environment
+ * accordingly.
+ * 
+ * @param info: A structure containing potential arguments. Used to maintain
+ *        a constant function prototype.
+ * @param var: The string representing the environment variable name.
+ * @param value: The string representing the value to be associated with the variable.
+ * 
+ * @return: Always returns 0 to indicate success.
+*/
 int _setenv(info_t *info, char *var, char *value)
 {
 	char *buf = NULL;

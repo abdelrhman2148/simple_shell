@@ -1,12 +1,19 @@
 #include "shell.h"
 
 /**
- * get_history_file - gets the history file
- * @info: parameter struct
+ * get_history_file - Retrieves the path to the shell's history file
+ * @info: A pointer to the parameter struct
  *
- * Return: allocated string containg history file
- */
-
+ * This function is responsible for constructing and returning the path to
+ * the shell's history file based on the user's home directory. It uses the
+ * information provided in the 'info' struct to locate the home directory.
+ *
+ * @info: A struct containing necessary information.
+ *
+ * Return: A dynamically allocated string containing the full path
+ * to the history file. It is the caller's responsibility
+ *                            to free this memory when done.
+*/
 char *get_history_file(info_t *info)
 {
 	char *buf, *dir;
@@ -23,13 +30,18 @@ char *get_history_file(info_t *info)
 	_strcat(buf, HIST_FILE);
 	return (buf);
 }
-
 /**
- * write_history - creates a file, or appends to an existing file
- * @info: the parameter struct
+ * write_history - Creates a new history file or appends to an existing one.
+ * @info: A pointer to the parameter struct, which contains relevant information.
  *
- * Return: 1 on success, else -1
- */
+ * This function is responsible for writing the history of commands to a file.
+ * It opens a file, specified by the 'filename' parameter, and writes each
+ * command from the 'history' linked list to the file.
+ *
+ * @info: A pointer to the parameter struct.
+ *
+ * Return: Returns 1 on success, or -1 on failure.
+*/
 int write_history(info_t *info)
 {
 	ssize_t fd;
@@ -54,11 +66,16 @@ int write_history(info_t *info)
 }
 
 /**
- * read_history - reads history from file
- * @info: the parameter struct
+ * read_history - Reads the command history from a file into memory.
+ * @info: A pointer to the struct containing relevant information.
  *
- * Return: histcount on success, 0 otherwise
- */
+ * This function opens and reads the command history from a file specified
+ * in the 'info' struct. It loads the history into memory for later use.
+ *
+ * @info: A pointer to the struct that contains information about the history file.
+ *
+ * Return: The number of commands read (histcount) on success, 0 on failure.
+*/
 int read_history(info_t *info)
 {
 	int i, last = 0, linecount = 0;
@@ -103,13 +120,17 @@ int read_history(info_t *info)
 }
 
 /**
- * build_history_list - adds entry to a history linked list
- * @info: Structure containing potential arguments. Used to maintain
- * @buf: buffer
- * @linecount: the history linecount, histcount
+ * build_history_list - Adds a new entry to the history linked list.
  *
- * Return: Always 0
- */
+ * This function is responsible for adding a new entry to a history linked list
+ * which maintains a record of previously executed commands.
+ *
+ * @info: A structure containing potential arguments and information used in the operation.
+ * @buf: The buffer containing the command or input to be added to the history.
+ * @linecount: The current line count, often referred to as histcount.
+ *
+ * Return: Always returns 0 to indicate successful execution.
+*/
 int build_history_list(info_t *info, char *buf, int linecount)
 {
 	list_t *node = NULL;
@@ -124,11 +145,17 @@ int build_history_list(info_t *info, char *buf, int linecount)
 }
 
 /**
- * renumber_history - renumbers the history linked list after changes
- * @info: Structure containing potential arguments. Used to maintain
+ * renumber_history - Renumber the history linked list after changes.
  *
- * Return: the new histcount
- */
+ * This function renumbers the history linked list, assigning a new sequential
+ * number to each node in the list. This is useful when making changes to the
+ * history, ensuring that the list remains in an orderly fashion.
+ *
+ * @info: A structure containing potential arguments. Used to maintain context.
+ *
+ * Return: The new histcount, which represents the total number of nodes in the
+ * updated history list.
+*/
 int renumber_history(info_t *info)
 {
 	list_t *node = info->history;

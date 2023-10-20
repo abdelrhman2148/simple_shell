@@ -1,8 +1,12 @@
 #include "shell.h"
-
 /**
- * clear_info - initializes info_t struct
- * @info: struct address
+ * clear_info - Initializes an info_t struct with default values.
+ *
+ * This function takes a pointer to an info_t struct and sets its members to default values,
+ * making it ready for use. The members include 'arg,' 'argv,' 'path,' and 'argc,' which are
+ * all initialized to NULL or 0 as appropriate.
+ *
+ * @param info - A pointer to the info_t struct to be initialized.
  */
 void clear_info(info_t *info)
 {
@@ -11,12 +15,15 @@ void clear_info(info_t *info)
 	info->path = NULL;
 	info->argc = 0;
 }
-
 /**
- * set_info - initializes info_t struct
- * @info: struct address
- * @av: argument vector
- */
+ * set_info - Initializes the 'info_t' struct with information.
+ *
+ * This function is responsible for initializing the 'info_t' struct, which holds
+ * information about the shell. It populates the struct with relevant data.
+ *
+ * @param info - A pointer to the 'info_t' struct to be initialized.
+ * @param av - The argument vector (array of strings).
+*/
 void set_info(info_t *info, char **av)
 {
 	int i = 0;
@@ -45,10 +52,15 @@ void set_info(info_t *info, char **av)
 }
 
 /**
- * free_info - frees info_t struct fields
- * @info: struct address
- * @all: true if freeing all fields
- */
+ * free_info - Frees the fields of an info_t struct.
+ * @info: Pointer to the info_t struct.
+ * @all: If true, frees all fields, including optional ones.
+ *
+ * This function is responsible for freeing the memory associated with various fields
+ * within the info_t struct. The 'info' parameter is a pointer to the struct that holds
+ * information related to a shell. If 'all' is true, it frees all fields, including optional
+ * ones like command history and aliases.
+*/
 void free_info(info_t *info, int all)
 {
 	ffree(info->argv);
