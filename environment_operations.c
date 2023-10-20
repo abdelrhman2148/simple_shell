@@ -35,7 +35,7 @@ int remove_environment_variable(info_t *info, char *variable)
 		return (0);
 	while (node)
 	{
-		p = starts_with(node->str, variable);
+		p = string_starts_with(node->str, variable);
 		if (p && *p == '=')
 		{
 			info->environment_changed = delete_node_at_index(&(info->env), index);
@@ -67,16 +67,16 @@ int set_environment_variable(info_t *info, char *variable, char *value)
 
 	if (!variable || !value)
 		return (0);
-	buffer = malloc(_strlen(variable) + _strlen(value) + 2);
+	buffer = malloc(str_length(variable) + str_length(value) + 2);
 	if (!buffer)
 		return (1);
-	_strcpy(buffer, variable);
-	_strcat(buffer, "=");
-	_strcat(buffer, value);
+	string_copy(buffer, variable);
+	string_concatenate(buffer, "=");
+	string_concatenate(buffer, value);
 	node = info->env;
 	while (node)
 	{
-		p = starts_with(node->str, variable);
+		p = string_starts_with(node->str, variable);
 		if (p && *p == '=')
 		{
 			free(node->str);

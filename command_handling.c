@@ -92,12 +92,12 @@ int replace_aliases(info_t *info)
 			return (0);
 		}
 		free(info->argv[0]);
-		p = _strchr(node->str, '=');
+		p = find_character(node->str, '=');
 		if (!p)
 		{
 			return (0);
 		}
-		p = _strdup(p + 1);
+		p = string_duplicate(p + 1);
 		if (!p)
 		{
 			return (0);
@@ -122,21 +122,21 @@ int replace_variables(info_t *info)
 	{
 		if (info->argv[i][0] != '$' || !info->argv[i][1])
 			continue;
-		if (!_strcmp(info->argv[i], "$?"))
+		if (!str_compare(info->argv[i], "$?"))
 		{
 			replace_string(&(info->argv[i]),
-					_strdup(convert_number(info->status, 10, 0));
+					string_duplicate(convert_integer_to_string(info->status, 10, 0));
 					continue;
-					if (!_strcmp(info->argv[i], "$$"))
+					if (!str_compare(info->argv[i], "$$"))
 					replace_string(&(info->argv[i]),
-						_strdup(convert_number(getpid(), 10, 0)));
+						string_duplicate(convert_integer_to_string(getpid(), 10, 0)));
 					continue;
 					node = find_variable(info->env, &info->argv[i][1], '=');
 					if (node)
 					replace_string(&(info->argv[i]),
-						_strdup(_strchr(node->str, '=') + 1));
+						string_duplicate(find_character(node->str, '=') + 1));
 					continue;
-					replace_string(&info->argv[i], _strdup(""));
+					replace_string(&info->argv[i], string_duplicate(""));
 					return (0);
 		}
 	}

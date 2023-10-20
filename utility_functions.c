@@ -37,13 +37,13 @@ int convert_string_to_integer(char *s)
 */
 void print_error_message(info_t *info, char *error_string)
 {
-	_eputs(info->fname);
-	_eputs(": ");
+	print_error_message(info->fname);
+	print_error_message(": ");
 	print_decimal(info->line_count, STDERR_FILENO);
-	_eputs(": ");
-	_eputs(info->argv[0]);
-	_eputs(": ");
-	_eputs(error_string);
+	print_error_message(": ");
+	print_error_message(info->argv[0]);
+	print_error_message(": ");
+	print_error_message(error_string);
 }
 
 /**

@@ -32,9 +32,9 @@ ssize_t buffer_input(info_t *info, char **buf, size_t *len)
 				r--;
 			}
 			info->linecount_flag = 1;
-			remove_comments(*buf);
+			remove_first_comment(*buf);
 			build_history_list(info, *buf, info->histcount++);
-			if (_strchr(*buf, ';'))
+			if (find_character(*buf, ';'))
 			{
 				*len = r;
 				info->cmd_buf = buf;
@@ -57,7 +57,7 @@ ssize_t get_input(info_t *info)
 	ssize_t r = 0;
 	char **buf_p = &(info->arg), *p;
 
-	_putchar(BUF_FLUSH);
+	character_print(BUF_FLUSH);
 	r = buffer_input(info, &buf, &len);
 	if (r == -1)
 		return (-1);
@@ -65,10 +65,10 @@ ssize_t get_input(info_t *info)
 	{
 		j = i;
 		p = buf + i;
-		check_chain(info, buf, &j, i, len);
+		check_command_chain(info, buf, &j, i, len);
 		while (j < len)
 		{
-			if (is_chain(info, buf, &j))
+			if (is_chain_delimiter(info, buf, &j))
 				break;
 			j++;
 		}
@@ -79,7 +79,7 @@ ssize_t get_input(info_t *info)
 			info->cmd_buf_type = CMD_NORM;
 		}
 		*buf_p = p;
-		return (_strlen(p));
+		return (str_length(p));
 	}
 	*buf_p = buf;
 	return (r);
@@ -129,15 +129,15 @@ int _getline(info_t *info, char **ptr, size_t *length)
 	r = read_buffer(info, buf, &len);
 	if (r == -1 || (r == 0 && len == 0))
 		return (-1);
-	c = _strchr(buf + i, '\n');
+	c = find_character(buf + i, '\n');
 	k = c ? 1 + (unsigned int)(c - buf) : len;
 	new_p = _realloc(p, s, s ? s + k : k + 1);
 	if (!new_p)
 		return (p ? free(p), -1 : -1);
 	if (s)
-		_strncat(new_p, buf + i, k - i);
+		concatenate_strings(new_p, buf + i, k - i);
 	else
-		_strncpy(new_p, buf + i, k - i + 1);
+		copy_string(new_p, buf + i, k - i + 1);
 	s += k - i;
 	i = k;
 	p = new_p;
@@ -155,7 +155,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 */
 void sigintHandler(__attribute__((unused)) int sig_num)
 {
-	_puts("\n");
-	_puts("$ ");
-	_putchar(BUF_FLUSH);
+	string_print("\n");
+	string_print("$ ");
+	character_print(BUF_FLUSH);
 }

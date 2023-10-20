@@ -21,7 +21,7 @@ list_t *add_node(list_t **head, const char *str, int num)
 	new_head->num = num;
 	if (str)
 	{
-		new_head->str = _strdup(str);
+		new_head->str = string_duplicate(str);
 		if (!new_head->str)
 		{
 			free(new_head);
@@ -55,7 +55,7 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 	new_node->num = num;
 	if (str)
 	{
-		new_node->str = _strdup(str);
+		new_node->str = string_duplicate(str);
 		if (!new_node->str)
 		{
 			free(new_node);
@@ -85,8 +85,8 @@ size_t print_list_str(const list_t *h)
 
 	while (h)
 	{
-		_puts(h->str ? h->str : "(nil)");
-		_puts("\n");
+		string_print(h->str ? h->str : "(nil)");
+		string_print("\n");
 		h = h->next;
 		i++;
 	}

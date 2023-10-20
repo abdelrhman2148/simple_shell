@@ -69,10 +69,10 @@ int print_single_alias(list_t *alias_node)
 		equals_pos = _strchr(alias_node->str, '=');
 		for (alias = alias_node->str; alias <= equals_pos; alias++)
 		{
-			_putchar(*alias);
-			_putchar('\'');
-			_puts(equals_pos + 1);
-			_puts("'\n");
+			character_print(*alias);
+			character_print('\'');
+			string_print(equals_pos + 1);
+			string_print("'\n");
 			return (0);
 		}
 	}

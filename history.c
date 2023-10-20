@@ -10,16 +10,16 @@ char *get_history_file(info_t *info)
 {
 	char *buf, *dir;
 
-	dir = _getenv(info, "HOME=");
+	dir = get_environment_variable(info, "HOME=");
 	if (!dir)
 		return (NULL);
-	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
+	buf = malloc(sizeof(char) * (str_length(dir) + str_length(HIST_FILE) + 2));
 	if (!buf)
 		return (NULL);
 	buf[0] = 0;
-	_strcpy(buf, dir);
-	_strcat(buf, "/");
-	_strcat(buf, HIST_FILE);
+	string_copy(buf, dir);
+	string_concatenate(buf, "/");
+	string_concatenate(buf, HIST_FILE);
 	return (buf);
 }
 
@@ -43,10 +43,10 @@ int write_history(info_t *info)
 		return (-1);
 	for (node = info->history; node; node = node->next)
 	{
-		_putsfd(node->str, fd);
-		_putfd('\n', fd);
+		print_to_fd(node->str, fd);
+		write_to_fd('\n', fd);
 	}
-	_putfd(BUF_FLUSH, fd);
+	write_to_fd(BUF_FLUSH, fd);
 	close(fd);
 	return (1);
 }
