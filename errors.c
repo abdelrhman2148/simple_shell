@@ -53,13 +53,15 @@ int _eputchar(char c)
 /**
  * _putfd - Writes a character to the given file descriptor.
  *
- * This function writes a single character to the specified file descriptor. It uses
- * a buffer to optimize write operations, flushing the buffer when necessary.
+ * This function writes a single character to the specified file descriptor.
+ * It uses a buffer to optimize write operations
+ * flushing the buffer when necessary.
  *
  * @c: The character to write.
  * @fd: The file descriptor to write to.
  *
- * Return: On success, 1 is returned. On error, -1 is returned, and errno is set appropriately.
+ * Return: On success, 1 is returned. On error, -1 is returned
+ * and errno is set appropriately.
 */
 int _putfd(char c, int fd)
 {
@@ -81,7 +83,7 @@ int _putfd(char c, int fd)
  * @str: The string to be printed.
  * @fd: The file descriptor to write to.
  *
- * This function takes a string 'str' and writes it to the file descriptor 'fd'.
+ * This function takes a string 'str' and writes it to the file descriptor.
  * It calculates and returns the number of characters written.
  *
  * Return: The number of characters successfully written to 'fd'.

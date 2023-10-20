@@ -9,7 +9,7 @@
  * user input, processing commands, and executing built-in functions or
  * external commands. It runs in a loop until an exit condition is met.
  *
- * @return: 0 on success, 1 on error, or an error code indicating the result.
+ * Return: 0 on success, 1 on error, or an error code indicating the result.
 */
 int hsh(info_t *info, char **av)
 {
@@ -94,7 +94,7 @@ int find_builtin(info_t *info)
  * searches for the command specified in the info->argv[0] within the dirs
  * listed in the PATH environment variable.
  *
- * @param info: A pointer to the info struct containing relevant information.
+ * @info: A pointer to the info struct containing relevant information.
  * Return: void
 */
 void find_cmd(info_t *info)
@@ -136,7 +136,7 @@ void find_cmd(info_t *info)
 /**
  * fork_cmd - Create a child process to execute a command.
  *
- * This function forks a child process and executes the specified command in it.
+ * This function forks child process and executes the specified command in it.
  * It also handles errors and reports them using perror.
  *
  * @info: Pointer to the parameter and return info struct.

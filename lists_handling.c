@@ -88,7 +88,7 @@ list_t *add_node_end(list_t **head, const char *str, int num)
  * This function traverses the linked list and prints the string element
  * of each node. If the string is NULL, it prints "(nil)".
  *
- * @return: The size of the linked list.
+ * Return: The size of the linked list.
 */
 size_t print_list_str(const list_t *h)
 {
@@ -105,7 +105,8 @@ size_t print_list_str(const list_t *h)
 }
 
 /**
- * delete_node_at_index - Deletes a node from a linked list at the specified index.
+ * delete_node_at_index - Deletes a node from a linked list
+ * at the specified index.
  * @head: A pointer to the address of the first node in the list.
  * @index: The index of the node to be deleted.
  *
@@ -153,11 +154,7 @@ int delete_node_at_index(list_t **head, unsigned int index)
  *
  * This function iterates through a linked list, deallocating memory.
  *
- * @head_ptr: Pointer to the head node of the list
- *
- * This function takes a pointer to the head node of a linked list and
- * frees each node and the memory allocated for its string data.
- * After the list is freed, the head pointer is set to NULL.
+ * @head_ptr: Pointer to the head node of the list.
 */
 void free_list(list_t **head_ptr)
 {

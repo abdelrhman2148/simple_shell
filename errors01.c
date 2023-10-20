@@ -3,11 +3,11 @@
 /**
  * _erratoi - Convert a string to an integer with error handling
  * @s: The string to be converted to an integer
- * 
+ *
  * This function takes a string 's' as input and converts it into an integer.
  * It performs error checking to ensure the conversion is valid.
- * 
- * @return: The converted integer if successful, -1 on error.
+ *
+ * Return: The converted integer if successful, -1 on error.
 */
 int _erratoi(char *s)
 {
@@ -35,7 +35,7 @@ int _erratoi(char *s)
  * print_error - Prints an error message to the standard error stream.
  * @info: A pointer to the info_t struct containing program information.
  * @estr: A string containing the specified error message.
- * 
+ *
  * This function is responsible for printing an error message to the standard
  * error stream. It includes information about the file name, line number,
  * and the error message itself, making it easier to identify and debug errors.
@@ -59,7 +59,7 @@ void print_error(info_t *info, char *estr)
  * If 'fd' is set to STDERR_FILENO, error output is used. It handles negative
  * numbers correctly and returns the number of characters printed.
  *
- * Returns: The number of characters printed.
+ * Return: The number of characters printed.
 */
 int print_d(int input, int fd)
 {

@@ -3,15 +3,11 @@
 /**
  * _strncpy - Copies a portion of a source string to a destination string.
  *
- * This function copies the first 'n' characters from the source string 'src' to
- * the destination string 'dest'. It ensures that the destination string is null-terminated
- * and has a maximum length of 'n'.
+ * @dest: The destination string where the copied characters will be stored.
+ * @src: The source string from which characters are copied.
+ * @n: The maximum number of characters to copy from src.
  *
- * @param dest: The destination string where the copied characters will be stored.
- * @param src: The source string from which characters are copied.
- * @param n: The maximum number of characters to copy from src.
- *
- * @return: A pointer to the destination string 'dest'.
+ * Return: A pointer to the destination string 'dest'.
 */
 char *_strncpy(char *dest, char *src, int n)
 {
@@ -42,9 +38,10 @@ char *_strncpy(char *dest, char *src, int n)
  * @src: The source string to be appended to dest
  * @n: The maximum number of bytes from src to concatenate
  *
- * This function concatenates the 'src' string to the 'dest' string, ensuring that
- * no more than 'n' bytes from 'src' are appended to 'dest'. It stops when the
- * 'n' bytes are reached or when the end of 'src' is reached, whichever comes first.
+ * This function concatenates the 'src' string to the 'dest' string
+ * ensuring that no more than 'n' bytes from 'src' are appended to 'dest'.
+ * It stops when the 'n' bytes are reached or when the end of 'src' is reached
+ * whichever comes first.
  *
  * Return: A pointer to the concatenated string (same as 'dest').
 */

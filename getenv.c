@@ -58,18 +58,14 @@ int _unsetenv(info_t *info, char *var)
 }
 
 /**
- * _setenv - Initializes a new environment variable or modifies an existing one.
- * 
- * This function is responsible for managing environment variables. It takes a
- * variable name and its corresponding value and sets or updates the environment
- * accordingly.
- * 
- * @param info: A structure containing potential arguments. Used to maintain
+ * _setenv - Initializes a new environment variable or modifies an exist one.
+ *
+ * @info: A structure containing potential arguments. Used to maintain
  *        a constant function prototype.
- * @param var: The string representing the environment variable name.
- * @param value: The string representing the value to be associated with the variable.
- * 
- * @return: Always returns 0 to indicate success.
+ * @var: The string representing the environment variable name.
+ * @value: The string representing the value to be associated with the var.
+ *
+ * Return: Always returns 0 to indicate success.
 */
 int _setenv(info_t *info, char *var, char *value)
 {

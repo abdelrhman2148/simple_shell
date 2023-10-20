@@ -1,10 +1,8 @@
 #include "shell.h"
 /**
  * _myenv - Prints the current environment variables.
- *
- * This function prints the list of environment variables to the standard output.
- *
- * @info: A structure containing potential arguments. Used to maintain a constant function prototype.
+ * @info: A structure containing potential arguments.
+ * Used to maintain a constant function prototype.
  *
  * Return: Always 0 to indicate successful execution.
 */
@@ -24,7 +22,7 @@ int _myenv(info_t *info)
  * a match, it returns the value of the environment variable. If no match is
  * found, it returns NULL.
  *
- * Returns: The value of the environment variable or NULL if not found.
+ * Return: The value of the environment variable or NULL if not found.
 */
 char *_getenv(info_t *info, const char *name)
 {
@@ -42,13 +40,11 @@ char *_getenv(info_t *info, const char *name)
 }
 
 /**
- * _mysetenv - Initialize a new environment variable or modify an existing one.
+ * _mysetenv - Initialize a new environment variable or modify an existone.
  *
- * This function is responsible for setting or modifying environment variables in a shell.
- * It takes a structure containing potential arguments to maintain a consistent function prototype.
+ * @info: A pointer to a structure containing arguments and information.
  *
- * @param info: A pointer to a structure containing arguments and information.
- * @return: 0 on success, 1 on failure.
+ * Return: 0 on success, 1 on failure.
 */
 int _mysetenv(info_t *info)
 {

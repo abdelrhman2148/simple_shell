@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * interactive - Check if the shell is running in interactive mode
+ * interactive - Check if the shell is running in interactive mode.
+ * @info: Pointer to a struct that contains information about the shell.
  *
- * This function checks whether the shell is currently operating in an interactive
- * mode, meaning it can accept input and provide output to the user via a terminal.
- *
- * @info: Pointer to a struct that contains information about the shell
+ * This function checks whether the shell is currently operating
+ * in an interactive mode, meaning it can accept input
+ * and provide output to the user via a terminal.
  *
  * Return: 1 if the shell is in interactive mode, 0 otherwise
 */
@@ -18,13 +18,13 @@ int interactive(info_t *info)
  * is_delim - Check if a character is a delimiter in a given delimiter string.
  * @c: The character to check.
  * @delim: The delimiter string to search within.
- * 
+ *
  * This function iterates through the delimiter string and checks if the given
- * character 'c' matches any character in the delimiter string. If a match is
- * found, the function returns 1, indicating that 'c' is a delimiter. Otherwise,
- * it returns 0, indicating that 'c' is not a delimiter.
- * 
- * Returns: 1 if 'c' is a delimiter, 0 if 'c' is not a delimiter.
+ * character 'c' matches any character in the delimiter string.
+ * If a match is found, the fun returns 1, indicating that 'c' is a delimiter.
+ * Otherwise, it returns 0, indicating that 'c' is not a delimiter.
+ *
+ * Return: 1 if 'c' is a delimiter, 0 if 'c' is not a delimiter.
 */
 int is_delim(char c, char *delim)
 {
@@ -53,13 +53,10 @@ int _isalpha(int c)
 
 /**
  * _atoi - Converts a string to an integer.
- *
- * This function takes a string and converts it to an integer. It handles both positive
- * and negative numbers, and it stops conversion when a non-digit character is encountered.
- *
  * @s: The string to be converted to an integer.
  *
- * Return: The converted integer. If there are no valid numbers in the string, it returns 0.
+ * Return: The converted integer. If there are no valid numbers
+ * in the string, it returns 0.
 */
 int _atoi(char *s)
 {

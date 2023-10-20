@@ -2,13 +2,11 @@
 /**
  * input_buf - Read and buffer chained commands.
  *
- * This function reads and buffers chained commands, updating the buffer and its length.
+ * @info: A pointer to the parameter struct.
+ * @buf: A pointer to the address of the buffer.
+ * @len: A pointer to the address of the length variable.
  *
- * @param info - A pointer to the parameter struct.
- * @param buf - A pointer to the address of the buffer.
- * @param len - A pointer to the address of the length variable.
- *
- * @return ssize_t - The number of bytes read.
+ * Return: ssize_t - The number of bytes read.
 */
 ssize_t input_buf(info_t *info, char **buf, size_t *len)
 {
@@ -45,7 +43,7 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 }
 
 /**
- * get_input - Reads a line of input from the shell excluding the newline char.
+ * get_input - Reads a line of input from the shell exclud the newline char.
  *
  * @info: A structure containing information about the shell.
  *
@@ -98,14 +96,11 @@ ssize_t get_input(info_t *info)
 /**
  * read_buf - Reads data from a file descriptor into a buffer.
  *
- * This function reads data from the specified file descriptor
- *                      into the provided buffer.
+ * @info: A pointer to the information structure.
+ * @buf: The buffer where data will be stored.
+ * @i: A pointer to the size of the buffer.
  *
- * @param info - A pointer to the information structure.
- * @param buf - The buffer where data will be stored.
- * @param i - A pointer to the size of the buffer.
- *
- * @return ssize_t - The number of bytes read, or an error code.
+ * Return: ssize_t The number of bytes read, or an error code.
 */
 ssize_t read_buf(info_t *info, char *buf, size_t *i)
 {
@@ -125,9 +120,9 @@ ssize_t read_buf(info_t *info, char *buf, size_t *i)
  * @ptr: Address of a pointer to the buffer, preallocated or NULL.
  * @length: Size of the preallocated ptr buffer if not NULL.
  *
- * This function is responsible for reading input from STDIN. It can work with a preallocated buffer
- * or allocate a new one as needed. It also keeps track of the current position and length of the
- * input buffer.
+ * This function is responsible for reading input from STDIN.
+ * It can work with a preallocated buffer or allocate a new one as needed.
+ * It also keeps track of the current position and length of the input buffer.
  *
  * Return: The number of bytes read.
 */
@@ -173,7 +168,8 @@ int _getline(info_t *info, char **ptr, size_t *length)
 /**
  * sigintHandler - Signal handler for SIGINT (Ctrl-C)
  *
- * This function is responsible for handling the SIGINT signal (Ctrl-C) in an interactive shell.
+ * This function is responsible for handling the SIGINT signal
+ * (Ctrl-C) in an interactive shell.
  *
  * @sig_num: The signal number (in this case, SIGINT)
  *

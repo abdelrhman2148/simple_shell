@@ -32,7 +32,7 @@ char *get_history_file(info_t *info)
 }
 /**
  * write_history - Creates a new history file or appends to an existing one.
- * @info: A pointer to the parameter struct, which contains relevant information.
+ * @info: A pointer to the parameter struct, which contains relevant info.
  *
  * This function is responsible for writing the history of commands to a file.
  * It opens a file, specified by the 'filename' parameter, and writes each
@@ -72,7 +72,7 @@ int write_history(info_t *info)
  * This function opens and reads the command history from a file specified
  * in the 'info' struct. It loads the history into memory for later use.
  *
- * @info: A pointer to the struct that contains information about the history file.
+ * @info: A pointer to the struct that contains info about the history file.
  *
  * Return: The number of commands read (histcount) on success, 0 on failure.
 */
@@ -125,8 +125,8 @@ int read_history(info_t *info)
  * This function is responsible for adding a new entry to a history linked list
  * which maintains a record of previously executed commands.
  *
- * @info: A structure containing potential arguments and information used in the operation.
- * @buf: The buffer containing the command or input to be added to the history.
+ * @info: A structure contain potential argu and info used in the operation.
+ * @buf: The buffer containing the command or input to be add to the history.
  * @linecount: The current line count, often referred to as histcount.
  *
  * Return: Always returns 0 to indicate successful execution.
@@ -146,11 +146,6 @@ int build_history_list(info_t *info, char *buf, int linecount)
 
 /**
  * renumber_history - Renumber the history linked list after changes.
- *
- * This function renumbers the history linked list, assigning a new sequential
- * number to each node in the list. This is useful when making changes to the
- * history, ensuring that the list remains in an orderly fashion.
- *
  * @info: A structure containing potential arguments. Used to maintain context.
  *
  * Return: The new histcount, which represents the total number of nodes in the

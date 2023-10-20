@@ -2,12 +2,13 @@
 /**
  * clear_info - Initializes an info_t struct with default values.
  *
- * This function takes a pointer to an info_t struct and sets its members to default values,
- * making it ready for use. The members include 'arg,' 'argv,' 'path,' and 'argc,' which are
- * all initialized to NULL or 0 as appropriate.
+ * @info: A pointer to the info_t struct to be initialized.
  *
- * @param info - A pointer to the info_t struct to be initialized.
- */
+ * This function takes a pointer to an info_t struc
+ * and sets its members to default values, making it ready for use.
+ * The members include 'arg,' 'argv,' 'path,' and 'argc,'
+ * which are all initialized to NULL or 0 as appropriate.
+*/
 void clear_info(info_t *info)
 {
 	info->arg = NULL;
@@ -18,11 +19,8 @@ void clear_info(info_t *info)
 /**
  * set_info - Initializes the 'info_t' struct with information.
  *
- * This function is responsible for initializing the 'info_t' struct, which holds
- * information about the shell. It populates the struct with relevant data.
- *
- * @param info - A pointer to the 'info_t' struct to be initialized.
- * @param av - The argument vector (array of strings).
+ * @info: A pointer to the 'info_t' struct to be initialized.
+ * @av: The argument vector (array of strings).
 */
 void set_info(info_t *info, char **av)
 {
@@ -56,9 +54,11 @@ void set_info(info_t *info, char **av)
  * @info: Pointer to the info_t struct.
  * @all: If true, frees all fields, including optional ones.
  *
- * This function is responsible for freeing the memory associated with various fields
- * within the info_t struct. The 'info' parameter is a pointer to the struct that holds
- * information related to a shell. If 'all' is true, it frees all fields, including optional
+ * This function is responsible for freeing the memory associated
+ * with various fields within the info_t struct.
+ * The 'info' parameter is a pointer to the struct
+ * that holds information related to a shell.
+ * If 'all' is true, it frees all fields, including optional
  * ones like command history and aliases.
 */
 void free_info(info_t *info, int all)

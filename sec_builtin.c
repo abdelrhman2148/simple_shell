@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _myhistory - displays the history list, one command by line, preceded
- *              with line numbers, starting at 0.
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
- */
+ * _myhistory - This function display the command history list presenting each
+ *              command on a separate line with line numbers, starting at 0.
+ * @info: A structure containing potential arguments
+ * ensuring a consistent function prototype.
+ * Return: Always returns 0 to indicate successful execution.
+*/
 int _myhistory(info_t *info)
 {
 	print_list(info->history);
@@ -14,12 +14,16 @@ int _myhistory(info_t *info)
 }
 
 /**
- * unset_alias - sets alias to string
- * @info: parameter struct
- * @str: the string alias
+ * unset_alias - Removes an alias from the shell's alias list
  *
- * Return: Always 0 on success, 1 on error
- */
+ * This function removes an alias identified by the provided string from the
+ * list of aliases in the shell's information structure (info_t).
+ *
+ * @info: A pointer to the shell's information structure.
+ * @str:  The string containing the alias to be removed.
+ *
+ * Return: 0 on success, 1 on error.
+*/
 int unset_alias(info_t *info, char *str)
 {
 	char *p, c;
@@ -37,12 +41,14 @@ int unset_alias(info_t *info, char *str)
 }
 
 /**
- * set_alias - sets alias to string
- * @info: parameter struct
- * @str: the string alias
+ * set_alias - Sets an alias for a given string in the shell.
  *
- * Return: Always 0 on success, 1 on error
- */
+ * @info: The struct that holds information about the shell.
+ * @str: The string containing the alias to be set.
+ * Should be in the format "alias_name=command".
+ *
+ * Return: Returns 0 on success, 1 on error.
+*/
 int set_alias(info_t *info, char *str)
 {
 	char *p;
@@ -58,11 +64,16 @@ int set_alias(info_t *info, char *str)
 }
 
 /**
- * print_alias - prints an alias string
- * @node: the alias node
+ * print_alias - Prints the content of an alias node in user-friendly format.
+ * @node: Pointer to the alias node containing alias definition.
  *
- * Return: Always 0 on success, 1 on error
- */
+ * This function extracts and prints an alias definition from the given node.
+ * It formats the alias definition with single quotes
+ * and outputs it to the standard output.
+ * If the node is NULL, it indicates an error.
+ *
+ * Return: 0 on success (alias printed), 1 on error (node is NULL).
+*/
 int print_alias(list_t *node)
 {
 	char *p = NULL, *a = NULL;
@@ -81,11 +92,15 @@ int print_alias(list_t *node)
 }
 
 /**
- * _myalias - mimics the alias builtin (man alias)
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- *  Return: Always 0
- */
+ * _myalias - Implements the alias command, similar to 'man alias'.
+ * @info: A structure containing potential arguments and aliases.
+ *
+ * This function allows users to define and manage command aliases.
+ * If called with no arguments, it lists all defined aliases. When provided
+ * with alias definitions, it creates or updates aliases.
+ *
+ * Return: Always returns 0.
+*/
 int _myalias(info_t *info)
 {
 	int i = 0;

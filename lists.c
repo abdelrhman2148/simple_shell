@@ -4,10 +4,7 @@
  * list_len - Determines the length of a linked list.
  * @h: A pointer to the first node in the list.
  *
- * This function iterates through the linked list starting from the given node
- * and counts the number of elements in the list.
- *
- * @return: The size of the linked list.
+ * Return: The size of the linked list.
 */
 size_t list_len(const list_t *h)
 {
@@ -25,10 +22,7 @@ size_t list_len(const list_t *h)
  * list_to_strings - Convert a linked list of strings to an array of strings
  * @head: Pointer to the first node of the linked list
  *
- * This function takes a linked list of strings and converts it into an array
- * of strings.
- *
- * @return: A dynamically allocated array of strings, or NULL.
+ * Return: A dynamically allocated array of strings, or NULL.
 */
 char **list_to_strings(list_t *head)
 {
@@ -65,10 +59,7 @@ char **list_to_strings(list_t *head)
  * print_list - Prints all elements of a linked list of struct of type list_t.
  * @h: A pointer to the first node of the linked list.
  *
- * This function iterates through the linked list, printing the numeric value
- * followed by a colon and space, and then the string value for each node.
- *
- * @return: The size of the linked list (the number of nodes).
+ * Return: The size of the linked list (the number of nodes).
 */
 size_t print_list(const list_t *h)
 {

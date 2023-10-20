@@ -12,13 +12,14 @@
  *
  * @info: The structure containing shell information.
  *
- * Return: Returns the exit status, which is (0) if info->argv[0] is not "exit".
+ * Return: Returns the exit status
+ * which is (0) if info->argv[0] is not "exit".
 */
 int _myexit(info_t *info)
 {
 	int exitcheck;
 
-	if (info->argv[1])  /* If there is an exit arguement */
+	if (info->argv[1])
 	{
 		exitcheck = _erratoi(info->argv[1]);
 		if (exitcheck == -1)
@@ -47,7 +48,7 @@ int _myexit(info_t *info)
  * directory using the `getcwd` function. If successful, it proceeds to change
  * the directory as specified in the provided arguments.
  *
- * @return: Always returns 0.
+ * Return: Always returns 0.
 */
 int _mycd(info_t *info)
 {
@@ -61,7 +62,7 @@ int _mycd(info_t *info)
 	{
 		dir = _getenv(info, "HOME=");
 		if (!dir)
-			chdir_ret = 
+			chdir_ret =
 				chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
 		else
 			chdir_ret = chdir(dir);
@@ -75,7 +76,7 @@ int _mycd(info_t *info)
 			return (1);
 		}
 		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
-		chdir_ret = 
+		chdir_ret =
 			chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
