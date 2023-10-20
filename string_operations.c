@@ -1,76 +1,75 @@
 #include "shell.h"
 
 /**
- * copy_string - Copy a string from source to destination.
- * @destination: The destination string to be copied to.
- * @source: The source string.
- * @max_characters: The maximum number of characters to be copied.
+ * _strlen - returns the length of a string
+ * @s: the string whose length to check
  *
- * Return: The concatenated string.
-*/
-char *copy_string(char *destination, char *source, int max_characters)
+ * Return: integer length of string
+ */
+int _strlen(char *s)
 {
-	int i, j;
-	char *result = destination;
+	int i = 0;
 
-	i = 0;
-	while (source[i] != '\0' && i < max_characters - 1)
-	{
-		destination[i] = source[i];
+	if (!s)
+		return (0);
+
+	while (*s++)
 		i++;
-	}
-	if (i < max_characters)
-	{
-		j = i;
-		while (j < max_characters)
-		{
-			destination[j] = '\0';
-			j++;
-		}
-	}
-	return (result);
+	return (i);
 }
 
 /**
- * concatenate_strings - Concatenate two strings.
- * @first: The first string.
- * @second: The second string.
- * @max_characters: The maximum number of bytes to be used.
+ * _strcmp - performs lexicogarphic comparison of two strangs.
+ * @s1: the first strang
+ * @s2: the second strang
  *
- * Return: The concatenated string.
-*/
-char *concatenate_strings(char *first, char *second, int max_characters)
+ * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
+ */
+int _strcmp(char *s1, char *s2)
 {
-	int i, j;
-	char *result = first;
-
-	i = 0;
-	j = 0;
-	while (first[i] != '\0')
-		i++;
-	while (second[j] != '\0' && j < max_characters)
+	while (*s1 && *s2)
 	{
-		first[i] = second[j];
-		i++;
-		j++;
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
 	}
-	if (j < max_characters)
-		first[i] = '\0';
-	return (result);
+	if (*s1 == *s2)
+		return (0);
+	else
+		return (*s1 < *s2 ? -1 : 1);
 }
 
 /**
- * find_character - Locate a character in a string.
- * @string: The string to be searched.
- * @character: The character to look for.
+ * starts_with - checks if needle starts with haystack
+ * @haystack: string to search
+ * @needle: the substring to find
  *
- * Return: A pointer to the first occurrence, or NULL if not found.
-*/
-char *find_character(char *string, char character)
+ * Return: address of next char of haystack or NULL
+ */
+char *starts_with(const char *haystack, const char *needle)
 {
-	do {
-		if (*string == character)
-			return (string);
-	} while (*string++ != '\0');
-	return (NULL);
+	while (*needle)
+		if (*needle++ != *haystack++)
+			return (NULL);
+	return ((char *)haystack);
+}
+
+/**
+ * _strcat - concatenates two strings
+ * @dest: the destination buffer
+ * @src: the source buffer
+ *
+ * Return: pointer to destination buffer
+ */
+char *_strcat(char *dest, char *src)
+{
+	char *ret = dest;
+
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = *src;
+	return (ret);
 }
