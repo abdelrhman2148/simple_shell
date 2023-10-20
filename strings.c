@@ -1,87 +1,87 @@
+#include "shell.h"
+
 /**
- * str_length - Returns the length of a string.
- * @str: The string to calculate the length of.
+ * _strcpy - copies a string
+ * @dest: the destination
+ * @src: the source
  *
- * Return: The integer length of the string.
-*/
-int str_length(char *str)
+ * Return: pointer to destination
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i = 0;
+
+	if (dest == src || src == 0)
+		return (dest);
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = 0;
+	return (dest);
+}
+
+/**
+ * _strdup - duplicates a string
+ * @str: the string to duplicate
+ *
+ * Return: pointer to the duplicated string
+ */
+char *_strdup(const char *str)
 {
 	int length = 0;
+	char *ret;
+
+	if (str == NULL)
+		return (NULL);
+	while (*str++)
+		length++;
+	ret = malloc(sizeof(char) * (length + 1));
+	if (!ret)
+		return (NULL);
+	for (length++; length--;)
+		ret[length] = *--str;
+	return (ret);
+}
+
+/**
+ *_puts - prints an input string
+ *@str: the string to be printed
+ *
+ * Return: Nothing
+ */
+void _puts(char *str)
+{
+	int i = 0;
 
 	if (!str)
-		return (0);
-	while (*str++)
+		return;
+	while (str[i] != '\0')
 	{
-		length++;
-	}
-	return (length);
-}
-
-/**
- * str_compare - Performs a lexicographic comparison of two strings.
- * @str1: The first string.
- * @str2: The second string.
- *
- * Return: A negative value if str1 < str2,
- *           a positive value if str1 > str2, and 0 if str1 == str2.
-*/
-int str_compare(char *str1, char *str2)
-{
-	while (*str1 && *str2)
-	{
-		if (*str1 != *str2)
-		{
-			return (*str1 - *str2);
-		}
-		str1++;
-		str2++;
-	}
-	if (*str1 == *str2)
-	{
-		return (0);
-	}
-	else
-	{
-		return (*str1 < *str2 ? -1 : 1);
+		_putchar(str[i]);
+		i++;
 	}
 }
 
 /**
- * string_starts_with - Checks if the haystack starts with the needle.
- * @haystack: The string to search.
- * @needle: The substring to find at the beginning of the haystack.
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
  *
- * Return: The address of the next character, or NULL if not found.
-*/
-char *string_starts_with(const char *haystack, const char *needle)
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
 {
-	while (*needle)
-	{
-		if (*needle++ != *haystack++)
-			return (NULL);
-	}
-	return ((char *)haystack);
-}
+	static int i;
+	static char buf[WRITE_BUF_SIZE];
 
-/**
- * string_concatenate - Concatenates two strings.
- * @destination: The destination buffer where the result is stored.
- * @source: The source buffer to be appended.
- *
- * Return: A pointer to the destination buffer.
-*/
-char *string_concatenate(char *destination, char *source)
-{
-	char *result = destination;
-
-	while (*destination)
+	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
-		destination++;
+		write(1, buf, i);
+		i = 0;
 	}
-	while (*source)
-	{
-		*destination++ = *source++;
-	}
-	*destination = *source;
-	return (result);
+	if (c != BUF_FLUSH)
+		buf[i++] = c;
+	return (1);
 }
